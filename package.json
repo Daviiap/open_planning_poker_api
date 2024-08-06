@@ -1,0 +1,35 @@
+{
+  "name": "planning_poker_api",
+  "version": "1.0.0",
+  "description": "api for open planning poker project",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon --watch 'src/' --exec 'ts-node index.ts' -e ts",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daviiap/open_planning_poker_api.git"
+  },
+  "keywords": [
+    "planning-poker"
+  ],
+  "author": "OpenPlanningPokerProject",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Daviiap/open_planning_poker_api/issues"
+  },
+  "homepage": "https://github.com/Daviiap/open_planning_poker_api#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^10.0.0",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "uuid": "^10.0.0"
+  }
+}
