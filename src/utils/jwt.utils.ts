@@ -1,11 +1,12 @@
 import { User } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import env from "../env";
 
 export default {
     generateToken: (user: User) => {
         const token = jwt.sign(
             user,
-            process.env.JWT_PASS as string,
+            env.JWT_PASS,
             {
                 expiresIn: "1h"
             });

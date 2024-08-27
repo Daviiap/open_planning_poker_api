@@ -1,8 +1,9 @@
 import bcrypt from "bcryptjs";
+import env from "../env";
 
 export default {
     encryptPass: (password: string) => {
-        return bcrypt.hashSync(password, parseInt(process.env.BCRYPT_ROUNDS as string, 10));
+        return bcrypt.hashSync(password, env.BCRYPT_ROUNDS);
     },
     validate: (password: string, hash: string) => {
         return bcrypt.compareSync(password, hash);
