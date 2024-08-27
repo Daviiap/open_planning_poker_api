@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import userRepo from "../repositories/user.repo";
-import User from "../models/user.model";
 import passwordUtils from "../utils/password.utils";
 
 export default {

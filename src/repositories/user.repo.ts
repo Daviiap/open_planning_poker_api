@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import db from "../database/database_con"
-import User from "../models/user.model";
 
 export default {
     createUser: async (user: User) => {

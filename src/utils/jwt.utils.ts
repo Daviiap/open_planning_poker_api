@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import jwt from "jsonwebtoken";
-import User from "../models/user.model";
 
 export default {
     generateToken: (user: User) => {
