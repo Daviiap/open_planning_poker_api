@@ -16,8 +16,8 @@ export default (req: Request, res: Response, next: NextFunction) => {
     }
 
     try {
-        const authInfo = jwtUtils.validate(token);
-        res.locals.authInfo = authInfo;
+        const authData = jwtUtils.validate(token);
+        res.locals.authData = authData;
     } catch (error) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ error: "invalid token" })
     }
