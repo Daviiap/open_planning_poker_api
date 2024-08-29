@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { header, param, validationResult } from 'express-validator';
+import { param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
 
 export default [

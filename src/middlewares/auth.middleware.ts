@@ -6,20 +6,20 @@ export default (req: Request, res: Response, next: NextFunction) => {
     const { authorization: authHeader } = req.headers;
 
     if (!authHeader) {
-        return res.status(StatusCodes.FORBIDDEN).json({ error: "auth token not provided" })
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: "auth token not provided" })
     }
 
     const [type, token] = authHeader.split(" ")
 
     if (type !== "Bearer") {
-        return res.status(StatusCodes.FORBIDDEN).json({ error: "token malformated" })
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: "token malformated" })
     }
 
     try {
         const authInfo = jwtUtils.validate(token);
         res.locals.authInfo = authInfo;
     } catch (error) {
-        return res.status(StatusCodes.FORBIDDEN).json({ error: "invalid token" })
+        return res.status(StatusCodes.UNAUTHORIZED).json({ error: "invalid token" })
     }
 
     next();

@@ -1,3 +1,3 @@
-import getValidator from "./get.validator";
+import getValidators from "./get.validator";
 
-export default { get: getValidator };
+export default { getValidators };
