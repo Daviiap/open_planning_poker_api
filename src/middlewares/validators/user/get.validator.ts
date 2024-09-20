@@ -1,18 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
+import { param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
 
 export default [
-    body("email")
-        .notEmpty()
-        .isString()
-        .trim()
-        .isEmail(),
-    body("password")
-        .notEmpty()
-        .isString()
-        .trim()
-        .isLength({ min: 8 }),
+    param("userID").isInt(),
     (req: Request, res: Response, next: NextFunction) => {
         const result = validationResult(req);
         if (!result.isEmpty()) {
