@@ -5,6 +5,7 @@ import helmet from "helmet";
 import routesV1 from "./routes/v1/v1.routes";
 import env from "./env";
 import { Server } from 'socket.io';
+import jwtUtils from "./utils/jwt.utils";
 
 if (!env.API_PORT) {
     console.log("no port value especified, running on port 3000.");
@@ -21,23 +22,31 @@ app.use(cors());
 app.use(helmet());
 app.use("/v1", routesV1);
 
-io.use((socket, next) => {
-    const { token: authToken } = socket.handshake.auth;
+io.use(async (socket, next) => {
+    const authToken = socket.handshake.headers.authorization;
     if (authToken) {
-        // buscar user e validar token
-        // socket.handshake.auth.user = { name: [...], ...}
+        try {
+            const authData = jwtUtils.validate(authToken);
+            socket.handshake.auth.data = authData;
+        } catch (error) {
+            next(error as Error);
+        }
     }
     next();
 });
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
     socket.on('join-room', (roomId, userName) => {
+        if (socket.handshake.auth.data) {
+            userName = socket.handshake.auth.data.name;
+        }
+
         if (!userName) {
-            userName = socket.handshake.auth.user.name;
+            socket.disconnect();
         }
 
         // verifica se o roomID é uma sala que precisa de autenticação
-        
+
         socket.join(roomId)
 
         socket.to(roomId).emit('user-connected', socket.id, userName)
