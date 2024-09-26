@@ -22,17 +22,17 @@ export default {
 
   createOrganization: async (
     name: string,
-    owner: User,
-    admins: User[],
-    members: User[],
-    projects: Project[]
+    ownerID: number,
+    adminsID: number[],
+    membersID: number[],
+    projectsID: number[]
   ) => {
     await organizationRepo.createOrganization({
       name,
-      owner,
-      admins,
-      members,
-      projects
+      ownerID,
+      adminsID,
+      membersID,
+      projectsID
     } as Organization)
   }
 }

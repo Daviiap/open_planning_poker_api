@@ -3,7 +3,7 @@ import { param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
 
 export default [
-    param("projecteID").isInt(),
+    param("projectID").isInt(),
     (req: Request, res: Response, next: NextFunction) => {
         const result = validationResult(req);
         if (!result.isEmpty()) {

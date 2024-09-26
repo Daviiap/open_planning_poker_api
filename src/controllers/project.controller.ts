@@ -22,13 +22,13 @@ const handleGet = async (req: Request, res: Response) => {
 
 const handleCreate = async (req: Request, res: Response) => {
   try {
-    const { name, room, managers, participants } = req.body
+    const { name, roomID, managersID, participantsID } = req.body
 
     await projectService.createProject(
       name,
-      room,
-      managers,
-      participants
+      roomID,
+      managersID,
+      participantsID
     )
 
     return res.status(StatusCodes.CREATED).send()

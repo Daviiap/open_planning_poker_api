@@ -22,15 +22,15 @@ export default {
 
   createProject: async (
     name: string,
-    room: Room,
-    managers: User[],
-    members: User[],
+    roomID: number,
+    managersID: number[],
+    membersID: number[],
   ) => {
     await projectRepo.createProject({
       name,
-      room,
-      managers,
-      members
+      roomID,
+      managersID,
+      membersID
     } as Project)
   }
 }

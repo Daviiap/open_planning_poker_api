@@ -6,10 +6,10 @@ export default {
         await db.organization.create({
             data: {
                 name: organization.name,
-                owner: organization.owner,
-                admins: organization.admins,
-                members: organization.members,
-                projects: organization.projects
+                ownerID: organization.ownerID,
+                adminsID: organization.adminsID,
+                membersID: organization.membersID,
+                projectsID: organization.projectsID
             }
         });
     },

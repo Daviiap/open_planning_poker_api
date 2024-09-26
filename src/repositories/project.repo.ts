@@ -6,9 +6,9 @@ export default {
         await db.project.create({
             data: {
                 name: project.name,
-                room: project.room,
-                managers: project.managers,
-                members: project.members
+                roomID: project.roomID,
+                managersID: project.managersID,
+                membersID: project.membersID
             }
         });
     },

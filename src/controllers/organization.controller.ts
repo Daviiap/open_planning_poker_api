@@ -22,14 +22,14 @@ const handleGet = async (req: Request, res: Response) => {
 
 const handleCreate = async (req: Request, res: Response) => {
   try {
-    const { name, owner, admins, members, projects } = req.body
+    const { name, ownerID, adminsID, membersID, projectsID } = req.body
 
     await organizationService.createOrganization(
       name,
-      owner,
-      admins,
-      members,
-      projects
+      ownerID,
+      adminsID,
+      membersID,
+      projectsID
     )
 
     return res.status(StatusCodes.CREATED).send()
